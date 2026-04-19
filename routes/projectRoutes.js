@@ -2,6 +2,11 @@ const express=require("express");
 const router=express.Router();
 const authMiddleware=require("../middleware/authMiddleware.js")
 const authorizeRole=require("../middleware/authorizeRole.js");
-const {createProject}=require("../controller/projectController.js");
+const {createProject, getAllProjects}=require("../controller/projectController.js");
 router.post("/create",authMiddleware,authorizeRole("admin","manager"),createProject);
+router.get(
+  "/all",
+  authMiddleware,
+  getAllProjects
+);
 module.exports=router;

@@ -214,7 +214,7 @@ const approveStatusChange=async(req,res)=>
         )
         await sendNotification(
           task.assignedTo,
-          `Your task "${task.title}" was approved`
+          `Your task ${task.title} was approved`
         );
         res.json({
             message:"Task status approved",

@@ -1,4 +1,5 @@
  require('dotenv').config();
+ const cors = require("cors");
 const express=require("express");
 const { sequelize,dbConnection } = require("./config/dbConnect");
 const createAdmin =require('./controller/createAdmin.js')
@@ -11,7 +12,7 @@ const commentRoutes=require('./routes/commentRoutes.js');
 const notificationRoutes=require('./routes/notificationRoutes.js');
 const activityRoutes=require('./routes/activityRoutes.js');
  const app=express();
-
+app.use(cors());
  app.use(express.json());
 
 app.use("/auth",authRoutes);

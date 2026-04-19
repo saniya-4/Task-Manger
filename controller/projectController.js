@@ -42,4 +42,20 @@ const createProject=async(req,res)=>
         })
     }
 }
-module.exports={createProject};
+const getAllProjects = async (req, res) => {
+  try {
+    const projects = await Project.findAll({
+      order: [["createdAt", "DESC"]],
+    });
+
+    res.status(200).json({
+      message: "Projects fetched successfully",
+      projects,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+};
+module.exports={createProject,getAllProjects};

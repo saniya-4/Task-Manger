@@ -7,6 +7,7 @@ const addMember=async(req,res)=>
 {
     try{
         const {projectId,userId,role}=req.body;
+        const project=await Project.findByPk(projectId);
         const user=await User.findByPk(userId);
         if(!user)
         {
@@ -37,7 +38,7 @@ const addMember=async(req,res)=>
             "ADD_MEMBER",
             `${req.user.name} added ${user.name} to project ${project.title}`
         )
-        const project=await Project.findByPk(projectId);
+        
         console.log("Project found:", project.title);
         console.log("Sending notification to:", userId);
         await sendNotification(

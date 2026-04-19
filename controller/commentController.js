@@ -57,7 +57,7 @@ const addComment = async (req,res)=>{
       {
        await sendNotification(
         member.userId,
-        `${req.user.name} commented on task ${task}`
+        `${req.user.name} commented on task ${task.title}`
        )
       }
     }
