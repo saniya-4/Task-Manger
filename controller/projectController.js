@@ -18,7 +18,8 @@ const createProject=async(req,res)=>
         const project=await Project.create({
             title,
             description,
-            createdBy:req.user.id
+            createdBy:req.user.id,
+            ownerId: req.user.id 
         });
         await createActivityLog(
             project.id,
@@ -45,6 +46,9 @@ const createProject=async(req,res)=>
 const getAllProjects = async (req, res) => {
   try {
     const projects = await Project.findAll({
+      where: {
+        ownerId: req.user.id   // ✅ IMPORTANT FIX
+      },
       order: [["createdAt", "DESC"]],
     });
 

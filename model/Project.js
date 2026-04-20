@@ -12,7 +12,11 @@ const Project=sequelize.define("Project",{
 
   createdBy: {
     type: DataTypes.INTEGER
-  }
+  },
+  ownerId: {
+  type: DataTypes.INTEGER,
+  allowNull: false
+}
 
 });
 module.exports=Project;

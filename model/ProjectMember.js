@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/dbConnect");
-
+const User=require('./User');
+const Project=require('./Project');
 const ProjectMember = sequelize.define("ProjectMember", {
 
   projectId: {
@@ -16,8 +17,16 @@ const ProjectMember = sequelize.define("ProjectMember", {
   role: {
     type: DataTypes.ENUM("manager", "member"),
     defaultValue: "member"
-  }
+  },
+  
 
 });
 
 module.exports = ProjectMember;
+ProjectMember.belongsTo(User, {
+  foreignKey: "userId",
+});
+
+ProjectMember.belongsTo(Project, {
+  foreignKey: "projectId",
+});

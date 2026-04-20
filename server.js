@@ -11,6 +11,7 @@ const taskRoutes=require('./routes/taskRoutes.js');
 const commentRoutes=require('./routes/commentRoutes.js');
 const notificationRoutes=require('./routes/notificationRoutes.js');
 const activityRoutes=require('./routes/activityRoutes.js');
+const userRoutes=require('./routes/userRoutes.js');
  const app=express();
 app.use(cors());
  app.use(express.json());
@@ -23,6 +24,7 @@ app.use("/tasks",taskRoutes);
 app.use("/",commentRoutes);
 app.use("/activity",activityRoutes);
 app.use("/notifications",notificationRoutes);
+app.use("/api/users", userRoutes);
  (async()=>
   {
      try{

@@ -8,11 +8,11 @@ import Projects from "./pages/Projects";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
+import AddMember from "./pages/AddMember";
 
 function App() {
   return (
     <Routes>
-
       {/* Public Routes */}
       <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
@@ -51,7 +51,16 @@ function App() {
           </ProtectedRoute>
         }
       />
-
+      <Route
+        path="/projects/:projectId/add-members"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <AddMember />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }
